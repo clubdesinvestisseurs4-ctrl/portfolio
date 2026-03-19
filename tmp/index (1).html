@@ -789,10 +789,8 @@
       <div class="photo-deco-dot"></div>
       <div class="photo-deco-line"></div>
       <div class="photo-card" onclick="document.getElementById('photo-input').click()">
-        <img id="profile-photo" src="assets/photo.jpg" alt="Koffi AIME AMEN"
-             onload="this.style.display='block'; document.getElementById('photo-placeholder').style.display='none'; document.getElementById('photo-badge').style.display='block';"
-             onerror="this.style.display='none'; document.getElementById('photo-placeholder').style.display='flex'; document.getElementById('photo-badge').style.display='none';"
-             style="display:none;" />
+        <img id="profile-photo" src="" alt="Koffi AIME AMEN" style="display:none;"
+             onerror="this.style.display='none'; document.getElementById('photo-placeholder').style.display='flex'; document.getElementById('photo-badge').style.display='none';" />
         <div class="photo-placeholder" id="photo-placeholder">
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
@@ -1003,7 +1001,7 @@
           <div class="contact-item-icon">✉️</div>
           <div>
             <div class="contact-item-label">Email</div>
-            <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e4858d8981ca8f8b82828dd5dca48d8a948c86ca878d">[email&#160;protected]</a></div>
+            <div class="contact-item-value">aime.koffi18@inphb.ci</div>
           </div>
         </div>
         <div class="contact-item reveal reveal-delay-1">
@@ -1057,12 +1055,13 @@
 
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   /* ══════════════════════════════════════════════════════════
-     PHOTO — si vous changez le nom du fichier, mettez à jour
-     l'attribut src de l'img#profile-photo dans le HTML.
-     Exemple : src="assets/profil.png"
+     PHOTO — placez votre photo dans le dossier assets/ et
+     indiquez son nom exact ci-dessous.
+     Exemple : "assets/ma-photo.jpg" ou "assets/profil.png"
   ══════════════════════════════════════════════════════════ */
+  const PHOTO_URL = "assets/photo.jpg";
 
   const input  = document.getElementById('photo-input');
   const img    = document.getElementById('profile-photo');
@@ -1075,6 +1074,8 @@
     ph.style.display  = 'none';
     badge.style.display = 'block';
   }
+
+  if (PHOTO_URL) showPhoto(PHOTO_URL);
 
   input.addEventListener('change', e => {
     const file = e.target.files[0];
