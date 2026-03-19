@@ -789,7 +789,8 @@
       <div class="photo-deco-dot"></div>
       <div class="photo-deco-line"></div>
       <div class="photo-card" onclick="document.getElementById('photo-input').click()">
-        <img id="profile-photo" src="" alt="Koffi AIME AMEN" style="display:none;" />
+        <img id="profile-photo" src="" alt="Koffi AIME AMEN" style="display:none;"
+             onerror="this.style.display='none'; document.getElementById('photo-placeholder').style.display='flex'; document.getElementById('photo-badge').style.display='none';" />
         <div class="photo-placeholder" id="photo-placeholder">
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
@@ -1000,7 +1001,7 @@
           <div class="contact-item-icon">✉️</div>
           <div>
             <div class="contact-item-label">Email</div>
-            <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b9d8d0d4dc97d2d6dfdfd08881f9d0d7c9d1db97dad0">[email&#160;protected]</a></div>
+            <div class="contact-item-value">aime.koffi18@inphb.ci</div>
           </div>
         </div>
         <div class="contact-item reveal reveal-delay-1">
@@ -1048,13 +1049,13 @@
 
   <!-- ── FOOTER ── -->
   <footer>
-    <span>© 2025 Koffi AIME AMEN — Tous droits réservés</span>
+    <span>© 2026 Koffi AIME AMEN — Tous droits réservés</span>
     <span>Construit avec ♥ à Abidjan · Déployé sur <a href="https://vercel.com" target="_blank">Vercel</a></span>
   </footer>
 
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   /* ══════════════════════════════════════════════════════════
      PHOTO — placez votre photo dans le dossier assets/ et
      indiquez son nom exact ci-dessous.
@@ -1102,5 +1103,12 @@
       }
     });
   }, { threshold: 0.12 });
-  reveals.forEach(el => obs);
-  </script>
+  reveals.forEach(el => observer.observe(el));
+
+  /* ── Hero reveals immediately on load ── */
+  document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 100 + i * 120);
+  });
+</script>
+</body>
+</html>
